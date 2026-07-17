@@ -388,6 +388,13 @@ export default function Dashboard() {
                 <IdCard className="h-3.5 w-3.5" />
                 Edit record
               </button>
+              <button
+                onClick={() => navigate("/")}
+                className={`inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-medium text-slate-500 transition-colors hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 ${focusRing}`}
+              >
+                <Home className="h-4 w-4" />
+                Home
+              </button>
             </div>
           </motion.section>
         )}
@@ -437,13 +444,6 @@ export default function Dashboard() {
             <Search className="h-4 w-4" />
             Search the vault
           </button>
-          <button
-            onClick={() => navigate("/")}
-            className={`inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-medium text-slate-500 transition-colors hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 ${focusRing}`}
-          >
-            <Home className="h-4 w-4" />
-            Home
-          </button>
         </motion.section>
 
         {/* Recent uploads */}
@@ -479,7 +479,7 @@ export default function Dashboard() {
                   <motion.li
                     key={note.id}
                     variants={staggerItem}
-                    className="relative flex items-center justify-between gap-4 px-5 py-4"
+                    className="relative flex flex-wrap items-center justify-between gap-4 px-5 py-4"
                   >
                     <span
                       className={`absolute inset-y-0 left-0 w-1 ${config.accent}`}
@@ -494,11 +494,11 @@ export default function Dashboard() {
                         {note.course_code} · {timeAgo(note.created_at)}
                       </p>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-col items-end sm:flex-row sm:items-center gap-2">
                       <button
                         onClick={() => openNoteFile(note, setOpeningId)}
                         disabled={openingId === note.id}
-                        className={`inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition-colors hover:border-amber-400 hover:text-amber-600 disabled:opacity-50 dark:border-slate-600 dark:text-slate-300 dark:hover:border-amber-400 dark:hover:text-amber-400 ${focusRing}`}
+                        className={`inline-flex w-full sm:w-auto shrink-0 items-center justify-center gap-1.5 rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition-colors hover:border-amber-400 hover:text-amber-600 disabled:opacity-50 dark:border-slate-600 dark:text-slate-300 dark:hover:border-amber-400 dark:hover:text-amber-400 ${focusRing}`}
                       >
                         {openingId === note.id ? (
                           <Loader2 className="h-3.5 w-3.5 animate-spin" />
@@ -512,7 +512,7 @@ export default function Dashboard() {
                       <button
                         onClick={() => downloadNoteFile(note, setDownloadingId)}
                         disabled={downloadingId === note.id}
-                        className={`inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition-colors hover:border-amber-400 hover:text-amber-600 disabled:opacity-50 dark:border-slate-600 dark:text-slate-300 dark:hover:border-amber-400 dark:hover:text-amber-400 ${focusRing}`}
+                        className={`inline-flex w-full sm:w-auto shrink-0 items-center justify-center gap-1.5 rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition-colors hover:border-amber-400 hover:text-amber-600 disabled:opacity-50 dark:border-slate-600 dark:text-slate-300 dark:hover:border-amber-400 dark:hover:text-amber-400 ${focusRing}`}
                       >
                         {downloadingId === note.id ? (
                           <Loader2 className="h-3.5 w-3.5 animate-spin" />
