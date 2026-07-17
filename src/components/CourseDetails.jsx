@@ -11,6 +11,7 @@ import {
   BookOpen,
   Bookmark,
   UploadCloud,
+  GraduationCap,
   X,
   PlusCircle,
   Loader2,

@@ -6,6 +6,7 @@ import {
   ArrowLeft,
   FileText,
   X,
+  GraduationCap,
   CheckCircle,
   AlertCircle,
   Loader2,

@@ -8,6 +8,7 @@ import {
   FileText,
   BookOpen,
   Lock,
+  GraduationCap,
   Download,
   Loader2,
   AlertCircle,
