@@ -24,9 +24,15 @@ export default function Footer() {
   const handleSmoothScroll = (e, href) => {
     if (href.startsWith("#")) {
       e.preventDefault();
-      const el = document.querySelector(href);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+      if (window.location.pathname !== "/") {
+        navigate("/", { replace: true });
+        setTimeout(() => {
+          const el = document.querySelector(href);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      } else {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
       }
     }
   };
