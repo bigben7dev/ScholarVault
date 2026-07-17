@@ -1,4 +1,4 @@
-// src/App.jsx
+import { useEffect } from "react";
 import {
   BrowserRouter,
   Routes,
