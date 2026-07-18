@@ -416,11 +416,6 @@ export default function Dashboard() {
             label="Courses you've covered"
             value={coursesCoveredCount}
           />
-          <StatCard
-            icon={Library}
-            label="Resources in the vault"
-            value={totalVaultCount}
-          />
         </motion.section>
 
         {/* Quick actions — one primary action, the rest quiet */}
@@ -547,71 +542,6 @@ export default function Dashboard() {
                 );
               })}
             </motion.ul>
-          )}
-        </motion.section>
-
-        {/* Browse by course */}
-        <motion.section
-          initial="hidden"
-          animate="visible"
-          variants={fadeUp}
-          className="mt-10 pb-4"
-        >
-          <SectionHeading eyebrow="Explore" title="Browse by course" />
-
-          {coursesLoading ? (
-            <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {Array.from({ length: 4 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="h-32 animate-pulse rounded-xl bg-[#F0EDE4] dark:bg-slate-800"
-                />
-              ))}
-            </div>
-          ) : coursesError ? (
-            <p className="mt-4 text-sm text-red-500">{coursesError}</p>
-          ) : courses.length === 0 ? (
-            <EmptyState
-              icon={BookOpen}
-              title="No courses yet"
-              description="Be the first to upload a note and start building the vault."
-              actionLabel="Upload a note"
-              onAction={() => navigate("/upload")}
-            />
-          ) : (
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={staggerContainer}
-              className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-            >
-              {courses.map((course) => (
-                <motion.button
-                  key={course.course_code}
-                  variants={staggerItem}
-                  onClick={() =>
-                    navigate(
-                      `/search?course=${encodeURIComponent(course.course_code)}`,
-                    )
-                  }
-                  whileHover={{ y: -2 }}
-                  className={`group flex flex-col items-start rounded-xl border border-[#E8E3D8] bg-white p-5 text-left shadow-sm transition-colors hover:border-[#B8791A]/50 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-[#E8C77A]/50 ${focusRing}`}
-                >
-                  <div className="inline-flex rounded-lg bg-[#F5F2EA] p-2 dark:bg-slate-700">
-                    <BookOpen className="h-5 w-5 text-[#1B2A47] dark:text-slate-300" />
-                  </div>
-                  <h3 className="mt-4 font-['IBM_Plex_Sans'] text-base font-semibold text-[#1C1D22] dark:text-white">
-                    {course.course_title}
-                  </h3>
-                  <p className="mt-1 font-['IBM_Plex_Mono'] text-xs uppercase tracking-wide text-slate-400">
-                    {course.course_code}
-                  </p>
-                  <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-[#B8791A] opacity-0 transition-opacity group-hover:opacity-100 dark:text-[#E8C77A]">
-                    View notes <ChevronRight className="h-3 w-3" />
-                  </span>
-                </motion.button>
-              ))}
-            </motion.div>
           )}
         </motion.section>
       </main>
