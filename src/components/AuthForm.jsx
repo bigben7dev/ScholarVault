@@ -22,7 +22,7 @@ import {
 import { cn } from "../lib/utils";
 import { useAuth } from "../context/AuthContext";
 import { useDarkMode } from "../context/DarkModeContext";
-import { supabase } from "../lib/supabaseClient";
+import { supabase } from "../lib/supabase";
 import logo from "../assets/logo2.png";
 
 // Animation variants (unchanged)
